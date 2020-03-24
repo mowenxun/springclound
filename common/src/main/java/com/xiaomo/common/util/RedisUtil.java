@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ReflectionUtils;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.params.SetParams;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -692,7 +693,11 @@ public class RedisUtil {
      */
     public boolean tryGetDistributedLock(String lockKey, String requestId, int expireTime) {
         Jedis jedis = getJedis(redisTemplate);
-        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
+        //   String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
+        SetParams params = new SetParams();
+        params.nx();
+        params.px(expireTime);
+        String result = jedis.set(lockKey, requestId, params);
         if (LOCK_SUCCESS.equals(result)) {
             return true;
         }
