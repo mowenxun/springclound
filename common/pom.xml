@@ -17,6 +17,14 @@
             <!--            <version>2.9.1</version>-->
             <version>3.2.0</version>
         </dependency>
+
+        <!-- 雪花算法生产快速办法-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-captcha</artifactId>
+            <version>4.1.19</version>
+        </dependency>
+
     </dependencies>
 
 </project>

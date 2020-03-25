@@ -45,9 +45,11 @@ public class RedisTest extends BasicTest {
         if (redisUtil.tryGetDistributedLock(key, requestId, expireTime)) {
             System.out.println("获得锁执行=========");
             try {
-                Integer c = null;
+                Integer c = 133;
                 int a = c / 133;
             } catch (Exception e) {
+                redisUtil.releaseDistributedLock(key, requestId);
+            } finally {
                 redisUtil.releaseDistributedLock(key, requestId);
             }
         }
