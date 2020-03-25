@@ -62,7 +62,7 @@ public class IdGenerator {
      *
      * @return
      */
-    public String simpleUUID() {
+    public static String simpleUUID() {
         return IdUtil.simpleUUID();
     }
 

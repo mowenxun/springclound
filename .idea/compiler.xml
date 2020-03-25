@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springclound" />
         <module name="client" />
+        <module name="inter" />
         <module name="common" />
         <module name="eureka" />
       </profile>
@@ -18,8 +19,9 @@
       <module name="client" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="eureka" options="-parameters" />
+      <module name="inter" options="-parameters" />
       <module name="springclound" options="-parameters" />
-      <module name="springclound1" options="-parameters" />
+      <module name="springclound1" options="" />
     </option>
   </component>
 </project>
