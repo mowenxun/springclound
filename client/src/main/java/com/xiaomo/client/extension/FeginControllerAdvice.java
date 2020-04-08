@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -46,8 +47,10 @@ public class FeginControllerAdvice {
      */
     @ExceptionHandler(value = ApplicationException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ResponseBody
     public ResultResponse<?> myErrorHandler(ApplicationException ex) {
-        return new ResultResponse<>(ex.getCode(), ex.getMessage());
+        ResultResponse resultResponse = new ResultResponse<>(ex.getCode(), ex.getMessage());
+        return resultResponse;
     }
 
     /**

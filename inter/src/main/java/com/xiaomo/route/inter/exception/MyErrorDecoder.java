@@ -10,8 +10,7 @@ import feign.codec.ErrorDecoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.nio.CharBuffer;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -54,8 +53,12 @@ public class MyErrorDecoder implements ErrorDecoder {
         String code = response.status() + "";
         try {
             if (response.body() != null) {
-                String body = toString11(response.body().asReader());
-                        //Util.toString(response.body().asReader());
+                //int a = response.body().length();
+               // InputStream io = response.body().asInputStream();
+              //  String s=toConvertString(io);
+                String body = Util.toString(response.body().asReader());
+                //toString11(response.body().asReader());
+                //Util.toString(response.body().asReader());
                 ResultResponse<?> resultResponse = objectMapper.readValue(body, ResultResponse.class);
                 code = resultResponse.getStatus();
                 message = resultResponse.getMsg();
@@ -121,6 +124,7 @@ public class MyErrorDecoder implements ErrorDecoder {
             }
         }
     }
+
     public static String toString11(Reader reader) throws IOException {
         if (reader == null) {
             return null;
@@ -146,6 +150,45 @@ public class MyErrorDecoder implements ErrorDecoder {
                 ensureClosed(reader);
             }
         }
+    }
+
+    /**
+     * 将一个InputStream流转换成字符串
+     *
+     * @param is
+     * @return
+     */
+    public static String toConvertString(InputStream is) {
+        StringBuffer res = new StringBuffer();
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader read = new BufferedReader(isr);
+        try {
+            String line;
+            line = read.readLine();
+            while (line != null) {
+                res.append(line + "");
+                        line = read.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != isr) {
+                    isr.close();
+                    isr.close();
+                }
+                if (null != read) {
+                    read.close();
+                    read = null;
+                }
+                if (null != is) {
+                    is.close();
+                    is = null;
+                }
+            } catch (IOException e) {
+            }
+        }
+        return res.toString();
     }
 
 }

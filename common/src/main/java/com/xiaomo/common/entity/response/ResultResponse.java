@@ -18,7 +18,7 @@ import java.util.Map;
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultResponse<T> implements Serializable {
-
+    private static final long serialVersionUID = -1549643581827130116L;
     private String statusCode;
     private String msg;
     private T data;
