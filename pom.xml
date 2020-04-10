@@ -20,7 +20,7 @@
         <module>eureka</module>
         <module>common</module>
         <module>client</module>
-
+        <module>dispatchCenter</module>
     </modules>
 
     <dependencies>

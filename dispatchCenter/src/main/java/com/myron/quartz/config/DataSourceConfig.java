@@ -1,4 +1,4 @@
-package com.xiaomo.client.config;
+package com.myron.quartz.config;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * 数据源配置
  */
 @Configuration
-@MapperScan("com.xiaomo.client.mapper.test")
+@MapperScan("com.deepexi.domain.marketing.mapper")
 public class DataSourceConfig {
 
 //    @Value("${spring.datasource.driverClassName}")
