@@ -22,7 +22,7 @@
         <!--alibaba json-->
         <alibaba-json.version>1.2.47</alibaba-json.version>
         <!-- mysql-->
-        <mysql-connector-java.version>5.1.36</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
 
     </properties>
 
